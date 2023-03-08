@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="flex flex-col p-10 text-right text-white">
         <h4 className="text-2xl">Links</h4>
         <div className="flex flex-col gap-2 pt-4 text-sm">
-          <Link href="/Datenschutz">Datenschutz</Link>
+          <Link href="/datenschutz">Datenschutz</Link>
           <Link href="/impressum">Impressum</Link>
         </div>
       </div>
