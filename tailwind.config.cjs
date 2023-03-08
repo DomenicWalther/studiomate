@@ -69,7 +69,7 @@ const config = {
 
 
 
-    }
+    },
     extend: {},
   },
   plugins: [],
