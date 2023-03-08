@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Masthead from "~/components/Masthead";
 import LandingPageInformation from "~/components/LandingPageInformation";
+import Footer from "~/components/Footer";
 
 import { api } from "~/utils/api";
 
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
     <div>
       <Masthead />
       <LandingPageInformation />
+      <Footer />
     </div>
   );
 };

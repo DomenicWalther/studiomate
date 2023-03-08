@@ -10,7 +10,6 @@ export interface subscribeUserRequest extends NextApiRequest {
 
 const subscribe = async (req: subscribeUserRequest, res: NextApiResponse) => {
   const { email } = req.body;
-  console.log(email);
 
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
