@@ -1,38 +1,39 @@
 import React from "react";
 import Image from "next/image";
 import { useState } from "react";
-import axios, { type AxiosError } from "axios";
 
 const Masthead: React.FC = () => {
   const [email, setEmail] = useState("");
   const [state, setState] = useState("idle");
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const subscribe = async (e: Event) => {
     e.preventDefault();
     setState("loading");
 
     try {
-      const response = await axios.post("/api/mailchimp/subscribeUser", {
-        email,
+      const response = await fetch("/api/mailchimp/subscribeUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
       });
       setState("success");
       setEmail("");
     } catch (error) {
-      const err = error as AxiosError;
-      if (err.response) {
-        setErrorMsg(err.response.data);
-      } else if (error.request) {
-        setErrorMsg(err.request);
-      } else {
-        setErrorMsg(err.message);
-      }
+      setErrorMsg("Something went wrong. Please try again later.");
       setState("error");
     }
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
+    <div
+      className="f
+    lex min-h-screen flex-col items-center justify-center"
+    >
       <div className="absolute top-0 left-0 z-[2] h-full w-full bg-[#000B13] opacity-70"></div>
       <video
         autoPlay
