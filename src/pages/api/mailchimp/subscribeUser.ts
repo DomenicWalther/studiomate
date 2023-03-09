@@ -1,4 +1,3 @@
-import axios, { AxiosError } from "axios";
 import { type NextApiResponse, type NextApiRequest } from "next";
 import { env } from "~/env.mjs";
 
@@ -23,15 +22,16 @@ const subscribe = async (req: subscribeUserRequest, res: NextApiResponse) => {
     email_address: email,
     status: "pending",
   };
-  const options = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `api_key ${API_KEY}`,
-    },
-  };
 
   try {
-    const response = await axios.post(url, data, options);
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `api_key ${API_KEY}`,
+      },
+      body: JSON.stringify(data),
+    });
     if (response.status >= 400) {
       return res.status(400).json({
         error:
@@ -39,12 +39,8 @@ const subscribe = async (req: subscribeUserRequest, res: NextApiResponse) => {
       });
     }
     return res.status(201).json({ message: "success" });
-  } catch (error: Error | AxiosError) {
-    if (axios.isAxiosError(error)) {
-      return res.status(500).json({ error: error.message });
-    } else {
-      return res.status(500).json({ error: "An error occured." });
-    }
+  } catch (error) {
+    return res.status(500).json({ error: "An error occured." });
   }
 };
 
