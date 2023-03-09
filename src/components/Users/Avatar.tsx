@@ -1,9 +1,13 @@
 import React from "react";
-import Image from "next/image";
-const Avatar: React.FC = () => {
+import Image, { type StaticImageData } from "next/image";
+
+interface AvatarProps {
+  avatarPath: string;
+}
+const Avatar: React.FC<AvatarProps> = ({ avatarPath }: AvatarProps) => {
   return (
     <div className="overflow-hidden rounded-full">
-      <Image src="/images/Avatar.jpeg" alt="Avatar" width={50} height={50} />
+      <Image src={avatarPath} alt="Avatar" width={50} height={50} />
     </div>
   );
 };
