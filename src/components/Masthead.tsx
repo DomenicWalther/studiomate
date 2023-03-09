@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useState } from "react";
-import axios from "axios";
+import axios, { type AxiosError } from "axios";
 
 const Masthead: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -18,15 +18,21 @@ const Masthead: React.FC = () => {
       });
       setState("success");
       setEmail("");
-    } catch (e) {
-      console.log(e);
-      setErrorMsg(e.response.data.error);
+    } catch (error) {
+      const err = error as AxiosError;
+      if (err.response) {
+        setErrorMsg(err.response.data);
+      } else if (error.request) {
+        setErrorMsg(err.request);
+      } else {
+        setErrorMsg(err.message);
+      }
       setState("error");
     }
   };
 
   return (
-    <div className="justfiy-ceter flex min-h-screen flex-col items-center">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <div className="absolute top-0 left-0 z-[2] h-full w-full bg-[#000B13] opacity-70"></div>
       <video
         autoPlay
