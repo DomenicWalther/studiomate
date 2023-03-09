@@ -1,22 +1,26 @@
 /** @type {import('tailwindcss').Config} */
+
 const config = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-montserrat)"],
+      },
       colors: {
         "accent-green": "#C1EFCB",
         "accent-pink": "#DCC2F4",
         "accent-warning": "#D16464",
-        "primary-purle-900": "#0C008C",
-        "primary-purle-800": "#1D0EBE",
-        "primary-purle-700": "#3525E6",
-        "primary-purle-600": "#4D3DF7",
-        "primary-purle-500": "#5D55FA",
-        "primary-purle-400": "#7069FA",
-        "primary-purle-300": "#8888FC",
-        "primary-purle-200": "#A2A5FC",
-        "primary-purle-100": "#C4C6FF",
-        "primary-purle-50": "#E6E6FF",
+        "primary-purple-900": "#0C008C",
+        "primary-purple-800": "#1D0EBE",
+        "primary-purple-700": "#3525E6",
+        "primary-purple-600": "#4D3DF7",
+        "primary-purple-500": "#5D55FA",
+        "primary-purple-400": "#7069FA",
+        "primary-purple-300": "#8888FC",
+        "primary-purple-200": "#A2A5FC",
+        "primary-purple-100": "#C4C6FF",
+        "primary-purple-50": "#E6E6FF",
         "primary-teal-900": "#014D40",
         "primary-teal-800": "#0C6B58",
         "primary-teal-700": "#147D64",

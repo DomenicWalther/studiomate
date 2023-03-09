@@ -3,7 +3,7 @@ import Navbar from "~/components/Navbar";
 
 const componentTesting: React.FC = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-supporting-neutrals-50">
       <Navbar />
     </div>
   );
