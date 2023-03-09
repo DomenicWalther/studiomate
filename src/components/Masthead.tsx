@@ -7,7 +7,7 @@ const Masthead: React.FC = () => {
   const [state, setState] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const subscribe = async (e: Event) => {
+  const subscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     setState("loading");
 
@@ -30,10 +30,7 @@ const Masthead: React.FC = () => {
   };
 
   return (
-    <div
-      className="f
-    lex min-h-screen flex-col items-center justify-center"
-    >
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <div className="absolute top-0 left-0 z-[2] h-full w-full bg-[#000B13] opacity-70"></div>
       <video
         autoPlay
@@ -49,7 +46,7 @@ const Masthead: React.FC = () => {
           The next generation <br></br> Studio Management Software
         </h2>
         <form
-          onSubmit={subscribe}
+          onSubmit={(e: React.FormEvent) => void subscribe(e)}
           className="mx relative mt-14 w-96 font-light  "
         >
           <input
